@@ -43,4 +43,23 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//Tesseract
+var tesseract = require('./lib/node-tesseract');
+
+var options = {
+    l: 'eng',
+    psm: 6,
+    binary: './lib/tesseract-ocr/tesseract',
+    config:'--tessdata ./lib/tesseract-ocr/tessdata'
+    //'tessdata-dir': './lib/tesseract-ocr/tessdata'
+};
+
+tesseract.process('img.jpg', options,  function(err, text) {
+    if(err) {
+        console.error(err);
+    } else {
+        console.log(text);
+    }
+});
+
 module.exports = app;
