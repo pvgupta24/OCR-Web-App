@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>OCR Web</title>
+
+
+    <!--Jquery,bootstrap,angular,fa-icons JS CDN's-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <script type="text/javascript" src="javascripts/ctrl.js"></script>
+
+    <link type="text/css" rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel='stylesheet' href='stylesheets/style.css' />
+</head>
+<body ng-controller="ctrl">
+<h1>OCR Web</h1>
+<p>This is an OCR app</p>
+
+
+<form id="uploadForm" action="/api/getText" enctype="multipart/form-data" method="post">
+    <input type="file" name="image" />
+    <input type="submit" value="Upload File" name="submit">
+</form>
+<!--name="file" onchange="angular.element(this).scope().uploadFile(this)"-->
+
+</body>
+</html>

@@ -8,5 +8,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="angular" level="application" />
+    <orderEntry type="library" name="angular-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>
