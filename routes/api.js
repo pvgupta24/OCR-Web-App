@@ -4,6 +4,8 @@ var router = express.Router();
 var path = require('path');
 var fs = require('fs');
 var multer = require('multer');
+var exec = require('child_process').exec;
+
 var imgName;
 
 var storage = multer.diskStorage({
@@ -55,17 +57,27 @@ router.route('/getText').post(function (req, res) {
     var options = {
         l: 'eng',
         psm: 6,
-        binary: './'+'./lib/tesseract-ocr/tesseract',
+        binary: 'tesseract'/*'./lib/tesseract'*/,
         config: '--tessdata ./lib/tesseract-ocr/tessdata'
         //'tessdata-dir': './lib/tesseract-ocr/tessdata'
     };
 
     var getText=function (img) {
 
+        exec('./lib/textcleaner -g -e normalize -o 12 -t 5 -u '+img+' '+ img , function(err) {
+            if (err) {
+                // Something went wrong executing the assembled command
+                console.log('Error cleaning file');
+                fs.unlinkSync(img);
+                res.send('Upload a better file');
+                return;
+            }
+        console.log('Cleaned the image')});
+
         tesseract.process(img, options, function (err, text) {
             if (err) {
                 console.error(err);
-                res.end('Tesseract Error');
+                res.end('Invalid File');
             } else {
                 console.log(text);
                 //delete the file after read
