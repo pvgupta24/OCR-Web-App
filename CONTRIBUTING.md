@@ -9,7 +9,7 @@ git clone https://github.com/pvgupta24/OCR-Web-App.gitx
 ```
 
 ### 2. Setup Leptonica and tesseract
-    > * Clone [Leptonica](https://github.com/DanBloomberg/leptonica) in the lib folder of the root directory.
+* Clone [Leptonica](https://github.com/DanBloomberg/leptonica) in the lib folder of the root directory.
 ```
 git clone https://github.com/DanBloomberg/leptonica.git
 ```
@@ -20,7 +20,7 @@ git clone https://github.com/DanBloomberg/leptonica.git
 make
 sudo make install
 ```
-> * Clone [Tesseract-OCR](git clone https://github.com/tesseract-ocr/tesseract) in the lib folder of the root directory.
+* Clone [Tesseract-OCR](git clone https://github.com/tesseract-ocr/tesseract) in the lib folder of the root directory.
 ```
 git clone https://github.com/tesseract-ocr/tesseract.git
 ```
