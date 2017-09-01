@@ -8,13 +8,14 @@ var exec = require('child_process').exec;
 
 var imgName;
 
+
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, './lib/')
     },
     filename: function (req, file, callback) {
         console.log(file);
-        imgName = file.originalname + '-' + Date.now() + path.extname(file.originalname);
+        imgName = /*(file.originalname).replace(/\s/g, '')*/ 'image' + '-' + Date.now() + path.extname(file.originalname);
         callback(null, imgName)
     }
 });
@@ -45,10 +46,11 @@ router.route('/getText').post(function (req, res) {
     }).single('image');
     upload(req, res, function (err) {
         if (err)
-            res.end("Error uploading file");/*
-        res.end('File is uploaded')*/
+            res.end("Error uploading file");
+        /*
+                res.end('File is uploaded')*/
         console.log('File Uploaded');
-         getText('./lib/'+imgName);
+        getText('./lib/' + imgName);
     });
 
 //Tesseract
@@ -56,33 +58,37 @@ router.route('/getText').post(function (req, res) {
 
     var options = {
         l: 'eng',
-        psm: 6,
-        binary: 'tesseract'/*'./lib/tesseract'*/,
+        psm: 1,
+        binary: './lib/tesseract',
         config: '--tessdata ./lib/tesseract-ocr/tessdata'
         //'tessdata-dir': './lib/tesseract-ocr/tessdata'
     };
 
-    var getText=function (img) {
+    var getText = function (img) {
 
-        exec('./lib/textcleaner -g -e normalize -o 12 -t 5 -u '+img+' '+ img , function(err) {
+        exec('./lib/textcleaner -g -e normalize -o 12 -t 5 -u -p 5 ' + img + ' ' + img, function (err) {
             if (err) {
-                // Something went wrong executing the assembled command
-                console.log('Error cleaning file');
+                // Something wrong executing the assembled command
+                console.log('Error cleaning file'+err);
+                /*
                 fs.unlinkSync(img);
                 res.send('Upload a better file');
-                return;
+                return;*/
             }
-        console.log('Cleaned the image')});
+            else
+                console.log('Cleaned the image')
+        });
 
         tesseract.process(img, options, function (err, text) {
             if (err) {
                 console.error(err);
                 res.end('Invalid File');
             } else {
-                console.log(text);
-                //delete the file after read
-                fs.unlinkSync(img);
-                res.send('\n'+text);
+                console.log(text.replace(/\n\s*\n/g, '\n'));
+
+                //Delete the file after read
+                 fs.unlinkSync(img);
+                res.send(text.replace(/\n\s*\n/g, '\n').replace(/\n/g,"<br>"));
             }
         });
     };

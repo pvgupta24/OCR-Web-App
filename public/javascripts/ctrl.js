@@ -27,6 +27,7 @@ app.controller('ctrl', ['$scope', '$http', function ($scope, $http) {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#img-upload').attr('src', e.target.result);
+                $('#img-upload').attr('height', '500px');
             };
             reader.readAsDataURL(input.files[0]);
 
