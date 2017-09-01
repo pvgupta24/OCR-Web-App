@@ -28,7 +28,7 @@ app.controller('ctrl', ['$scope', '$http', function ($scope, $http) {
             reader.onload = function (e) {
                 $img= $('#img-upload');
                 $img.attr('src', e.target.result);
-                $img.attr('height', '500px');
+               /* $img.attr('height', '500px');*/
             };
             reader.readAsDataURL(input.files[0]);
             console.log(input.files[0]);

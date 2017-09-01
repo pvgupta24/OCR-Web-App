@@ -31,4 +31,5 @@ a {
 .box{
   border: solid #7f8049 3px;
   height: 500px;
+  max-width:750px;
 }
