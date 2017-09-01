@@ -59,7 +59,7 @@ router.route('/getText').post(function (req, res) {
     var options = {
         l: 'eng',
         psm: 1,
-        binary: './lib/tesseract',
+        binary:'tesseract' /*'./lib/tesseract'*/,
         config: '--tessdata ./lib/tesseract-ocr/tessdata'
         //'tessdata-dir': './lib/tesseract-ocr/tessdata'
     };
