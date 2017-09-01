@@ -48,41 +48,42 @@
     </div>
 </form>-->
 
+<div class="form-group">
+    <label>Upload Image</label>
+    <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
+        <div class="input-group">
+                <span class="input-group-btn  btn-file ">
+                   <button class="btn btn-primary"> Browse… <i
+                           class="fa fa-folder-open faa-horizontal animated"></i></button>
+                    <input type="file" name="image" id="image">
+                </span>
+            <input class="form-control" placeholder="Select File" readonly>
+            <span class="input-group-btn">
+                        <button class="btn btn-success " >Upload <i
+                                class="fa fa-upload faa-float animated"></i> </button></span>
+        </div>
 
+    </form>
+    <!--<div class="input-group">
+
+    <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
+
+        <span class="input-group-btn">
+           <span class="btn btn-primary"> Browse… </span>
+
+        </span>
+        <input type="file" id="image" name="image"/>
+        <span class="input-group-btn">
+            <input class="btn btn-success " type="submit" value="Upload File" name="submit"></span>
+    </form>
+    </div>-->
+
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-sm-6">
-            <div class="form-group">
-                <label>Upload Image</label>
-                <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
-                    <div class="input-group">
-                <span class="input-group-btn  btn-file ">
-                   <button class="btn btn-primary"> Browse… <i
-                           class="fa fa-folder-open"></i></button>
-                    <input type="file" name="image" id="image">
-                </span>
-                        <input class="form-control" placeholder="Select File" readonly>
-                        <span class="input-group-btn">
-                        <button class="btn btn-success " type="submit">Upload <i
-                                class="fa fa-upload"></i> </button></span>
-                    </div>
-                    <br>
-                    <img id='img-upload' src="favicon.png" width="100%"/>
-                </form>
-                <!--<div class="input-group">
-
-                <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
-
-                    <span class="input-group-btn">
-                       <span class="btn btn-primary"> Browse… </span>
-
-                    </span>
-                    <input type="file" id="image" name="image"/>
-                    <span class="input-group-btn">
-                        <input class="btn btn-success " type="submit" value="Upload File" name="submit"></span>
-                </form>
-                </div>-->
-            </div>
+            <br>
+            <img id='img-upload' src="favicon.png" width="100%"/>
         </div>
         <div class="col-md-6 col-sm-6"><br><br>
             <iframe id="frame" name="frame" class="iframe well " height="500px"></iframe>
