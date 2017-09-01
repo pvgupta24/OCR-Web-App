@@ -1,10 +1,13 @@
+
 var app = angular.module('app', []);
 
 app.controller('ctrl', ['$scope', '$http', function ($scope, $http) {
     console.log('Controller:\n');
     $(document).on('change', '.btn-file :file', function () {
         var input = $(this),
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            //All slashes changed to '/' front slashes then retrieves the file name only from the path.
+            label = input.val().replace(/\\/g, '/').split('/').pop();
+        //Display file name in text input box
         input.trigger('fileselect', [label]);
     });
 
@@ -20,23 +23,21 @@ app.controller('ctrl', ['$scope', '$http', function ($scope, $http) {
         }
 
     });
-    /*   var fd = new FormData();*/
 
-    function readURL(input) {
+    /*   var fd = new FormData();*/
+    //Renders selected image in #image-upload
+    $("#image").change(function () {
+        var input=this;
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $img= $('#img-upload');
                 $img.attr('src', e.target.result);
-               /* $img.attr('height', '500px');*/
+                /* $img.attr('height', '500px');*/
             };
             reader.readAsDataURL(input.files[0]);
-            console.log(input.files[0]);
+            //console.log(input.files[0]);
         }
-    }
-
-    $("#image").change(function () {
-        readURL(this);
     });
    /*
     $scope.uploadFile = function (file) {

@@ -1,27 +1,25 @@
 var express = require('express');
 var router = express.Router();
-
 var path = require('path');
 var fs = require('fs');
 var multer = require('multer');
 var exec = require('child_process').exec;
 
 var imgName;
-
-
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, './lib/')
     },
     filename: function (req, file, callback) {
         console.log(file);
-        imgName = /*(file.originalname).replace(/\s/g, '')*/ 'image' + '-' + Date.now() + path.extname(file.originalname);
+        imgName = (file.originalname).replace(/\s/g, '') + '-image-' + Date.now() + path.extname(file.originalname);
         callback(null, imgName)
     }
 });
 
+//POST request receives image
 router.route('/getText').post(function (req, res) {
-    console.log(req.files);
+    console.log('receiving Image');
     /* if (!req.file) {
          res.send("No files uploaded");
      }
@@ -33,7 +31,6 @@ router.route('/getText').post(function (req, res) {
                  res.send("ERROR");
          });
      }*/
-
     var upload = multer({
         storage: storage,
         fileFilter: function (req, file, callback) {
@@ -47,33 +44,30 @@ router.route('/getText').post(function (req, res) {
     upload(req, res, function (err) {
         if (err)
             res.end("Error uploading file");
-        /*
-                res.end('File is uploaded')*/
-        console.log('File Uploaded');
-        getText('./lib/' + imgName);
+
+        else {
+            console.log('File Uploaded');
+            getText('./lib/' + imgName);
+        }
     });
 
-//Tesseract
+    //Tesseract implementaion
     var tesseract = require('../lib/node-tesseract');
 
     var options = {
         l: 'eng',
         psm: 1,
-        binary:'tesseract' /*'./lib/tesseract'*/,
+        binary: 'tesseract' /*'./lib/tesseract'*/,
         config: '--tessdata ./lib/tesseract-ocr/tessdata'
         //'tessdata-dir': './lib/tesseract-ocr/tessdata'
     };
 
     var getText = function (img) {
 
+        /*Runs textcleaner bash script to enhance grayscale unrotate and padd image*/
         exec('./lib/textcleaner -g -e normalize -o 12 -t 5 -u -p 5 ' + img + ' ' + img, function (err) {
             if (err) {
-                // Something wrong executing the assembled command
-                console.log('Error cleaning file'+err);
-                /*
-                fs.unlinkSync(img);
-                res.send('Upload a better file');
-                return;*/
+                console.log('Error cleaning file' + err);
             }
             else
                 console.log('Cleaned the image')
@@ -82,13 +76,15 @@ router.route('/getText').post(function (req, res) {
         tesseract.process(img, options, function (err, text) {
             if (err) {
                 console.error(err);
-                res.end('Invalid File');
+                res.end('Invalid File<br>Please upload again');
             } else {
+                //Replaces consecutive \n repetitions by single\n
                 console.log(text.replace(/\n\s*\n/g, '\n'));
-
-                //Delete the file after read
-               fs.unlinkSync(img);
-                res.send(text.replace(/\n\s*\n/g, '\n').replace(/\n/g,"<br>"));
+                //Deletes the file after reading the Text
+                fs.unlinkSync(img);
+                //Replaces consecutive \n repetitions by single\n
+                //Then replaces \n by <br> tags as it is rendered as HTML in front end
+                res.send(text.replace(/\n\s*\n/g, '\n').replace(/\n/g, "<br>"));
             }
         });
     };
