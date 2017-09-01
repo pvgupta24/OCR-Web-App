@@ -4,6 +4,7 @@
     <title>OCR Web</title>
 
     <link rel="shortcut icon" href="icon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
     <!--Jquery,bootstrap,angular,fa-icons JS CDN's-->
@@ -54,52 +55,55 @@
 <div class="container ">
     <div class="lead">
         <h1><i class="fa fa-search faa-pulse animated"></i> OCR Web</h1>
-        <p>This is an OCR app</p></div><label class="">Upload Image</label>
+        <p>This is an OCR app</p></div>
+    <label class="">Upload Image</label>
     <div class="text-center">
-    <div class="form-group " style="width:109%">
+        <div class="form-group " style="width:109%">
 
-        <div class="text-center">
-            <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
+            <div class="container text-center">
+                <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
 
-                <div class="input-group col-md-10 col-sm-10">
-                <span class="input-group-btn  btn-file ">
+                    <div class="input-group col-md-10 col-sm-10">
+                        <span class="input-group-btn  btn-file ">
                    <button class="btn btn-primary"> Browse… <i
                            class="fa fa-folder-open faa-horizontal animated"></i></button>
                     <input type="file" name="image" id="image">
-                </span>
-                    <input class="form-control" placeholder="Select File" readonly>
-                    <span class="input-group-btn">
+                            </span>
+                        <input class="form-control" placeholder="Select File" readonly>
+                        <span class="input-group-btn">
                         <button class="btn btn-success ">Upload
                             <i class="fa fa-upload faa-float animated"></i> </button></span>
-                </div>
+                    </div>
 
-            </form>
-            <!--<div class="input-group">
+                </form>
+                <!--<div class="input-group">
 
-            <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
+                <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
 
-                <span class="input-group-btn">
-                   <span class="btn btn-primary"> Browse… </span>
+                    <span class="input-group-btn">
+                       <span class="btn btn-primary"> Browse… </span>
 
-                </span>
-                <input type="file" id="image" name="image"/>
-                <span class="input-group-btn">
-                    <input class="btn btn-success " type="submit" value="Upload File" name="submit"></span>
-            </form>
-            </div>-->
+                    </span>
+                    <input type="file" id="image" name="image"/>
+                    <span class="input-group-btn">
+                        <input class="btn btn-success " type="submit" value="Upload File" name="submit"></span>
+                </form>
+                </div>-->
 
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <br><br>
-                <img id='img-upload' class="box" src="https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif" height="500px"/>
             </div>
-            <div class="col-md-6 col-sm-6"><br><br>
-                <iframe id="frame" name="frame" class="iframe well box" height="500px"></iframe>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <br><br>
+                    <img id='img-upload' class="img-rounded box"
+                         src="https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif"/>
+                </div>
+                <div class="col-md-6 col-sm-6"><br><br>
+                    <iframe id="frame" name="frame" class="iframe well box" height="500px"></iframe>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 

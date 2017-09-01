@@ -5,19 +5,13 @@ body { padding: 50px;
   color: bisque;
   /* Full height */
   height: 100%;
-/*
-  !* Center and scale the image nicely *!
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;*/
+
 }
 
 a {
   color: #00B7FF;
 }
 .btn-file {
-  position: relative;
-  overflow: hidden;
   cursor: pointer;
 }
 .btn-file input[type=file] {
@@ -36,4 +30,5 @@ a {
 }
 .box{
   border: solid #7f8049 3px;
+  height: 500px;
 }

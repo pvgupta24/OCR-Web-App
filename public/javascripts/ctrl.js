@@ -19,18 +19,18 @@ app.controller('ctrl', ['$scope', '$http', function ($scope, $http) {
             if (log) alert(log);
         }
 
-    });/*
-    var fd = new FormData();*/
+    });
+    /*   var fd = new FormData();*/
 
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('#img-upload').attr('src', e.target.result);
-                $('#img-upload').attr('height', '500px');
+                $img= $('#img-upload');
+                $img.attr('src', e.target.result);
+                $img.attr('height', '500px');
             };
             reader.readAsDataURL(input.files[0]);
-
             console.log(input.files[0]);
         }
     }
@@ -38,26 +38,7 @@ app.controller('ctrl', ['$scope', '$http', function ($scope, $http) {
     $("#image").change(function () {
         readURL(this);
     });
-   /* $scope.upload = function () {
-        var myFile = $('#image')[0].files[0];
-        console.log(myFile);
-
-
-        $http({
-            method: 'POST',
-            url: '/api/getText',
-            data: fd,
-            headers: {
-                'Content-Type': undefined
-            }
-            ,
-            transformRequest: angular.identity
-        }).then(function (res) {
-            console.log(res + "....");
-        }, function (err) {
-            console.log("Error" + err);
-        });
-    };*//*
+   /*
     $scope.uploadFile = function (file) {
         console.log('Trying to upload.');
         //console.log(file);
