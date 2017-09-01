@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, callback) {
         console.log(file);
-        imgName = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
+        imgName = file.originalname + '-' + Date.now() + path.extname(file.originalname);
         callback(null, imgName)
     }
 });
@@ -43,7 +43,7 @@ router.route('/getText').post(function (req, res) {
     }).single('image');
     upload(req, res, function (err) {
         if (err)
-            res.send("Error uploading file");/*
+            res.end("Error uploading file");/*
         res.end('File is uploaded')*/
         console.log('File Uploaded');
          getText('./lib/'+imgName);
@@ -65,6 +65,7 @@ router.route('/getText').post(function (req, res) {
         tesseract.process(img, options, function (err, text) {
             if (err) {
                 console.error(err);
+                res.end('Tesseract Error');
             } else {
                 console.log(text);
                 //delete the file after read

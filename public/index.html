@@ -9,23 +9,87 @@
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
-    <script type="text/javascript" src="javascripts/ctrl.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.min.css">
     <link type="text/css" rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel='stylesheet' href='stylesheets/style.css'/>
+    <script type="text/javascript" src="javascripts/ctrl.js"></script>
 
-    <link rel='stylesheet' href='stylesheets/style.css' />
 </head>
 <body ng-controller="ctrl">
 <h1>OCR Web</h1>
 <p>This is an OCR app</p>
+<!--
+<form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
+
+    <div class="container">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <label>Upload Image</label>
+                <div class="input-group">
+                <span class="input-group-btn  btn-file ">
+                   <button class="btn btn-primary "> Browse… </button>
+                    <input type="file" name="image" id="">                           >
+                </span>
+                    <input class="form-control" readonly>
+                    <span class="input-group-btn">
+                        <button class="btn btn-success " type="submit"
+                                ng-click="upload()">Upload<i
+                                class="fa fa-upload"></i> </button></span>
+                </div>
+                <br>
 
 
-<form id="uploadForm" action="/api/getText" enctype="multipart/form-data" method="post">
-    <input type="file" name="image" />
-    <input type="submit" value="Upload File" name="submit">
-</form>
-<!--name="file" onchange="angular.element(this).scope().uploadFile(this)"-->
+            </div>
+        </div>
+    </div>
+</form>-->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <label>Upload Image</label>
+                <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
+                    <div class="input-group">
+                <span class="input-group-btn  btn-file ">
+                   <button class="btn btn-primary"> Browse… <i
+                           class="fa fa-folder-open"></i></button>
+                    <input type="file" name="image" id="image">
+                </span>
+                        <input class="form-control" placeholder="Select File" readonly>
+                        <span class="input-group-btn">
+                        <button class="btn btn-success " type="submit">Upload <i
+                                class="fa fa-upload"></i> </button></span>
+                    </div>
+                    <br>
+                    <img id='img-upload' src="favicon.png" width="100%"/>
+                </form>
+                <!--<div class="input-group">
+
+                <form action="/api/getText" enctype="multipart/form-data" method="post" target="frame">
+
+                    <span class="input-group-btn">
+                       <span class="btn btn-primary"> Browse… </span>
+
+                    </span>
+                    <input type="file" id="image" name="image"/>
+                    <span class="input-group-btn">
+                        <input class="btn btn-success " type="submit" value="Upload File" name="submit"></span>
+                </form>
+                </div>-->
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6"><br><br>
+            <iframe id="frame" name="frame" class="iframe well " height="500px"></iframe>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>

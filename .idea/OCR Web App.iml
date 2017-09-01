@@ -12,5 +12,6 @@
     <orderEntry type="library" name="angular-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="dropify" level="application" />
   </component>
 </module>
