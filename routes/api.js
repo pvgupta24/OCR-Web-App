@@ -87,7 +87,7 @@ router.route('/getText').post(function (req, res) {
                 console.log(text.replace(/\n\s*\n/g, '\n'));
 
                 //Delete the file after read
-                 fs.unlinkSync(img);
+               fs.unlinkSync(img);
                 res.send(text.replace(/\n\s*\n/g, '\n').replace(/\n/g,"<br>"));
             }
         });

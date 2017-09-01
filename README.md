@@ -3,7 +3,7 @@ This is a web app which uses the Tesseract API for Optical Image Recognition.
 
 Demo of this app can be found [here](https://ocrweb.herokuapp.com) soon.
 
-The basic functionality of the application is demonstrated in [this video]()
+The basic functionality of the application is demonstrated in [this video](https://drive.google.com/open?id=0B2KDY9irUBbcbGlpc2tRRkJFR3c)
 
 ## How to USE
 ### Prerequisites
