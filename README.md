@@ -1,54 +1,53 @@
 # OCR Web
 This is a web app which uses the Tesseract API for Optical Image Recognition.
-
-Demo of this app can be found [here](https://ocrweb.herokuapp.com) soon.
+This app will be deployed [here](https://ocrweb.herokuapp.com)soon.
 
 The basic functionality of the application is demonstrated in [this video](https://drive.google.com/open?id=0B2KDY9irUBbcbGlpc2tRRkJFR3c)
 
-## How to USE
+## Usage Instructions
 ### Prerequisites
-> `leptonica`
+* leptonica
 
-> `tesseract`
+* tesseract
 
-> `node`
+* node
 
-> `npm`
+* npm
 
 Instructions for contributing can be found -> [CONTRIBUTING.md](https://github.com/pvgupta24/OCR-Web-App/blob/master/CONTRIBUTING.md) file.
 
 ### Installing Dependencies
-> Clone this repository .
+* Clone this repository .
 
-> Run `npm install` in the root directory to install the dependencies.
+* Run `npm install` in the root directory to install the dependencies.
 
-> Change to `public` directory and build the Angular app.
+* Change to `public` directory and build the Angular app.
 
-> Run `npm start` from the root directory.
+* Run `npm start` from the root directory.
 
-> The app is now available at `http://localhost:3000`
+* The app is now available at `http://localhost:3000`
 
 ## Tools and Frameworks used
 ### Front end
-> Bootstrap
+* Bootstrap
 
-> AngularJS
+* AngularJS
 
 ### Server side
-> Nodejs (with Express)
+* Nodejs (with Express)
 
-> Node Tesseract : Used as a wrapper for using the tesseract API's for the Node Platform
+* Node Tesseract : Used as a wrapper for using the tesseract API's for the Node Platform
 
-> Fred's ImageMagicks textcleaner `Bash` scripts : To enhancing the image and reducing noisefor better read.
+* Fred's ImageMagicks textcleaner `Bash` scripts : To enhancing the image and reducing noisefor better read.
 
-> Tesseract OCR Engine
+* Tesseract OCR Engine
 
-> Multer : For managing the uploaded image files (Node)
+* Multer : For managing the uploaded image files (Node)
 
 ## Limitations
-> As of now, it is implemented to recognize only English characters.
+* As of now, it is implemented to recognize only English characters.
 
-> Though the Tesseract-OCR engine is powerful, there is a limitation to its performance.
+* Though the Tesseract-OCR engine is powerful, there is a limitation to its performance.
 
 
 ## Future additions
